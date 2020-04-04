@@ -62,7 +62,7 @@ public class ClassServices {
 
     public void UpdateClasse(Classe cl) {
         try {
-            String requete = "update classes set (name,level) values(?,?) where ? = id";
+            String requete = "update classes set name = ? , level = ?  where ? = id";
             PreparedStatement pst = c.prepareStatement(requete);
             pst.setString(1, cl.getName());
             pst.setString(2, cl.getLevel());

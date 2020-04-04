@@ -16,6 +16,10 @@ public class Classroom {
     private int capacity;
     private String bloc;
 
+    public Classroom() {
+        
+    }
+
     public int getId() {
         return id;
     }

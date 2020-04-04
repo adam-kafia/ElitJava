@@ -17,6 +17,10 @@ public class Equipment {
     private float qte;
     private float qteInit;
 
+    public Equipment() {
+        
+    }
+
     public int getId() {
         return id;
     }
