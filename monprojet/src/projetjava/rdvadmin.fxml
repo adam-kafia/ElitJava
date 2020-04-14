@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetjava.RdvadminController">
+   <children>
+      <Pane fx:id="nontraitepane" prefHeight="500.0" prefWidth="733.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <Button fx:id="archiverdv" layoutX="18.0" layoutY="454.0" mnemonicParsing="false" onAction="#handlearchive" prefHeight="32.0" prefWidth="115.0" text="Consulter Archive" />
+            <TableView fx:id="tablerdv" layoutX="18.0" layoutY="9.0" prefHeight="426.0" prefWidth="707.0">
+              <columns>
+                <TableColumn fx:id="nomrdv" prefWidth="78.0" text="Nom" />
+                <TableColumn fx:id="prenomrdv" prefWidth="88.0" text="Prenom" />
+                  <TableColumn fx:id="cinrdv" prefWidth="103.0" text="CIN" />
+                  <TableColumn fx:id="daterdv" prefWidth="138.0" text="Date Rdv" />
+                  <TableColumn fx:id="heurerdv" prefWidth="120.0" text="Heure Rdv" />
+                  <TableColumn fx:id="mailrdv" prefWidth="108.0" text="Mail" />
+                  <TableColumn fx:id="typerdv" prefWidth="103.0" text="Type" />
+              </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="accepteritem" mnemonicParsing="false" onAction="#handleaccepted" text="Accepter" />
+                        <MenuItem fx:id="refuseritem" mnemonicParsing="false" onAction="#handlefailed" text="Refuser" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="698.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back" layoutX="694.0" layoutY="475.0" mnemonicParsing="false" onAction="#handleback" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+      <Pane fx:id="traitementpane" prefHeight="500.0" prefWidth="733.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <TextField fx:id="nomtext" layoutX="125.0" layoutY="57.0" promptText="Nom" />
+            <TextField fx:id="fraistext" layoutX="472.0" layoutY="57.0" prefHeight="25.0" prefWidth="169.0" promptText="Frais" />
+            <TextField fx:id="anneetext" layoutX="472.0" layoutY="228.0" prefHeight="25.0" prefWidth="169.0" promptText="Annee Scolaire" />
+            <TextField fx:id="mailtext" layoutX="125.0" layoutY="228.0" promptText="Mail" />
+            <TextField fx:id="teltext" layoutX="125.0" layoutY="172.0" promptText="Telephone" />
+            <TextField fx:id="prenomtext" layoutX="125.0" layoutY="115.0" promptText="Prenom" />
+            <Button fx:id="signup" layoutX="575.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleajout" prefHeight="32.0" prefWidth="132.0" text="Creer Compte" />
+            <ComboBox fx:id="adressecombo" layoutX="122.0" layoutY="331.0" prefHeight="25.0" prefWidth="155.0" promptText="Adresse" />
+            <DatePicker fx:id="datetext" layoutX="125.0" layoutY="279.0" prefHeight="25.0" prefWidth="149.0" promptText="Date De naissance" />
+            <ComboBox fx:id="nbrmoistext" layoutX="469.0" layoutY="172.0" prefHeight="25.0" prefWidth="169.0" promptText="Nombre De Mois Payer" />
+            <TextField fx:id="niveautext" layoutX="469.0" layoutY="279.0" prefHeight="25.0" prefWidth="169.0" promptText="Niveau" />
+            <ComboBox fx:id="classetext" layoutX="469.0" layoutY="331.0" prefHeight="25.0" prefWidth="169.0" promptText="Classe" />
+            <ComboBox fx:id="typetext" layoutX="472.0" layoutY="115.0" prefHeight="25.0" prefWidth="169.0" promptText="Type De Paiement" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="14.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back1" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#handlebackaff" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+      <Pane fx:id="archivepane" prefHeight="500.0" prefWidth="733.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <TableView fx:id="tablerdv1" layoutX="18.0" layoutY="20.0" prefHeight="414.0" prefWidth="707.0">
+               <columns>
+                  <TableColumn fx:id="nomrdvarchive" prefWidth="89.0" text="Nom" />
+                  <TableColumn fx:id="prenomrdvarchive" prefWidth="94.0" text="Prenom" />
+                  <TableColumn fx:id="cinrdvarchive" prefWidth="98.0" text="CIN" />
+                  <TableColumn fx:id="daterdvarchive" prefWidth="139.0" text="Date Rdv" />
+                  <TableColumn fx:id="mailrdvarchive" prefWidth="171.0" text="Mail" />
+                  <TableColumn fx:id="typerdvarchive" prefWidth="113.0" text="Type" />
+               </columns>
+            </TableView>
+            <Button fx:id="nontraite" layoutX="555.0" layoutY="454.0" mnemonicParsing="false" onAction="#handlenontraitee" prefHeight="32.0" prefWidth="161.0" text="Consulter Non Traitee" />
+            <CheckBox fx:id="accepted" layoutX="129.0" layoutY="451.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="155.0" text="Condidature Acceptee" />
+            <CheckBox fx:id="failed" layoutX="129.0" layoutY="475.0" mnemonicParsing="false" text="Condidature Refusee" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="7.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back2" layoutX="3.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleback" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetjava.UseradminController">
+   <children>
+      <AnchorPane prefHeight="508.0" prefWidth="92.0" style="-fx-background-color: black;" />
+      <Pane fx:id="teacherinfo" layoutX="88.0" prefHeight="508.0" prefWidth="645.0" style="-fx-background-color: #1f2737;" />
+      <Pane fx:id="index" layoutX="90.0" prefHeight="508.0" prefWidth="636.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <ImageView fitHeight="162.0" fitWidth="169.0" layoutX="394.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/unnamed.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="169.0" fitWidth="132.0" layoutX="39.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/téléchargement.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="169.0" fitWidth="148.0" layoutX="39.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/10218-man-teacher-icon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnstudent" layoutX="36.0" layoutY="19.0" mnemonicParsing="false" onAction="#study" prefHeight="148.0" prefWidth="137.0" style="-fx-background-color: none;" />
+            <Button fx:id="btnteach" layoutX="51.0" layoutY="311.0" mnemonicParsing="false" onAction="#teach" prefHeight="148.0" prefWidth="148.0" style="-fx-background-color: none;" />
+            <Button fx:id="btnstat" layoutX="429.0" layoutY="19.0" mnemonicParsing="false" onAction="#stat" prefHeight="148.0" prefWidth="141.0" style="-fx-background-color: none;" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="8.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back2" layoutX="8.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleback2" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+      <Pane fx:id="statistiquep" layoutX="88.0" prefHeight="508.0" prefWidth="645.0" style="-fx-background-color: FCF7DE;">
+         <children>
+            <Button fx:id="statniveau" layoutX="186.0" layoutY="199.0" mnemonicParsing="false" onAction="#handlestatparniveau" prefHeight="39.0" prefWidth="237.0" text="Etudiants Par Niveau" />
+            <Button fx:id="statpayement" layoutX="189.0" layoutY="271.0" mnemonicParsing="false" onAction="#handlestatpayement" prefHeight="39.0" prefWidth="237.0" text="Etudiants par Nombre De Mois Payer" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="10.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back3" layoutX="10.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleback1" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children></Pane>
+      <Pane fx:id="teacherp" layoutX="88.0" prefHeight="508.0" prefWidth="645.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <TableView fx:id="teachertable" layoutX="12.0" layoutY="8.0" prefHeight="428.0" prefWidth="590.0">
+              <columns>
+                <TableColumn fx:id="nomteacher" prefWidth="67.0" text="Nom" />
+                <TableColumn fx:id="prenomteacher" prefWidth="75.0" text="Prenom" />
+                  <TableColumn fx:id="mailteacher" prefWidth="155.0" text="Adresse Mail" />
+                  <TableColumn fx:id="phoneteacher" prefWidth="114.0" text="Telephone" />
+                  <TableColumn fx:id="adresseteacher" prefWidth="177.0" text="Adresse" />
+              </columns>
+            </TableView>
+            <ComboBox fx:id="triteacher" layoutX="178.0" layoutY="482.0" onAction="#handletrierteacher" prefWidth="150.0" promptText="trier par .." />
+            <TextField fx:id="searchteacher" layoutX="179.0" layoutY="448.0" onMouseClicked="#handlesearchteacher" promptText="search" />
+            <CheckBox layoutX="33.0" layoutY="452.0" mnemonicParsing="false" onAction="#handlefiltreactiveteacher" text="Active" textFill="#fffdfd" />
+            <CheckBox layoutX="33.0" layoutY="477.0" mnemonicParsing="false" onAction="#handlefiltrearchiveteacher" text="Archive" textFill="WHITE" />
+            <Button fx:id="detailsteacher" layoutX="470.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Plus De Detailles --&gt;" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="-1.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back1" layoutX="-1.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleback1" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children></Pane>
+      <Pane fx:id="studentinfo" layoutX="88.0" prefHeight="508.0" prefWidth="645.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <ImageView fx:id="image" fitHeight="150.0" fitWidth="137.0" layoutX="465.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/téléchargement.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="36.0" layoutY="195.0" prefHeight="17.0" prefWidth="58.0" text="Username:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="105.0" prefHeight="17.0" prefWidth="126.0" text="Numero De Telephone:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="45.0" prefHeight="17.0" prefWidth="137.0" text="NOM:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="75.0" prefHeight="17.0" prefWidth="58.0" text="PRENOM:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="165.0" prefHeight="17.0" prefWidth="126.0" text="Date De Naissance:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="135.0" prefHeight="17.0" prefWidth="126.0" text="Adresse Mail:" textFill="WHITE" />
+            <Label fx:id="noml" layoutX="200.0" layoutY="45.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="birthl" layoutX="200.0" layoutY="165.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="maill" layoutX="200.0" layoutY="135.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="phonel" layoutX="200.0" layoutY="105.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="usernamel" layoutX="200.0" layoutY="195.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="prenoml" layoutX="200.0" layoutY="75.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Button fx:id="modifprofil" layoutX="528.0" layoutY="469.0" mnemonicParsing="false" onAction="#handlemodifstudent" prefHeight="25.0" prefWidth="73.0" text="Modifier" />
+            <Label layoutX="37.0" layoutY="10.0" prefHeight="17.0" prefWidth="391.0" text="1-- Donnes Personelles" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="230.0" prefHeight="17.0" prefWidth="391.0" text="2-- Scolarites" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="265.0" prefHeight="17.0" prefWidth="126.0" text="Annee Scolaire:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="295.0" prefHeight="17.0" prefWidth="126.0" text="Niveau:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="325.0" prefHeight="17.0" prefWidth="126.0" text="Classe:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="360.0" prefHeight="17.0" prefWidth="391.0" text="3-- Frais De Scolarite" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="390.0" prefHeight="17.0" prefWidth="126.0" text="Frais:" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="420.0" prefHeight="17.0" prefWidth="126.0" text="Type De Payement :" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="450.0" prefHeight="17.0" prefWidth="137.0" text="Nombre De Mois Payes :" textFill="WHITE" />
+            <Label fx:id="anneel" layoutX="200.0" layoutY="265.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="niveaul" layoutX="200.0" layoutY="295.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="classel" layoutX="200.0" layoutY="325.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="fraisl" layoutX="200.0" layoutY="390.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="typepl" layoutX="200.0" layoutY="420.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Label fx:id="payerl" layoutX="200.0" layoutY="450.0" prefHeight="17.0" prefWidth="165.0" textFill="WHITE" />
+            <Button fx:id="archiverstudent" layoutX="440.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleetatarchive" prefHeight="25.0" prefWidth="73.0" text="Archiver" />
+            <Button fx:id="activerstudent" layoutX="350.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleetatactive" prefHeight="25.0" prefWidth="73.0" text="Activer" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="14.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back" layoutX="14.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleback" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+      <Pane fx:id="modifstudentp" layoutX="88.0" prefHeight="508.0" prefWidth="645.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <TextField fx:id="nomfield" layoutX="134.0" layoutY="74.0" prefHeight="20.0" promptText="Nom" />
+            <TextField fx:id="prenomfield" layoutX="134.0" layoutY="126.0" prefHeight="20.0" promptText="Prenom" />
+            <TextField fx:id="telfield" layoutX="134.0" layoutY="173.0" prefHeight="20.0" promptText="Telephone" />
+            <TextField fx:id="anneefield" layoutX="370.0" layoutY="74.0" prefHeight="20.0" promptText="Annee" />
+            <TextField fx:id="fraisfield" layoutX="370.0" layoutY="114.0" prefHeight="20.0" promptText="Frais" />
+            <Button fx:id="update" layoutX="508.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleupdate" prefHeight="25.0" prefWidth="73.0" text="Modifier" />
+            <DatePicker fx:id="naissfield" layoutX="134.0" layoutY="218.0" prefHeight="25.0" prefWidth="148.0" />
+            <ComboBox fx:id="niveaufield" layoutX="133.0" layoutY="264.0" prefWidth="150.0" promptText="Niveau" />
+            <ComboBox fx:id="classefield" layoutX="133.0" layoutY="309.0" prefWidth="150.0" promptText="Classe" />
+            <ComboBox fx:id="typefield" layoutX="369.0" layoutY="161.0" prefWidth="150.0" promptText="Type De Payement" />
+            <ComboBox fx:id="nbrmoisfield" layoutX="369.0" layoutY="205.0" prefWidth="150.0" promptText="Mois Payer" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="160.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back21" layoutX="156.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleback" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+      <Pane fx:id="studentp" layoutX="88.0" prefHeight="508.0" prefWidth="645.0" style="-fx-background-color: #1f2737;">
+         <children>
+            <TableView fx:id="studenttable" layoutX="11.0" layoutY="17.0" prefHeight="428.0" prefWidth="590.0">
+               <columns>
+                  <TableColumn fx:id="nomstudent" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="prenomstudent" prefWidth="75.0" text="Prenom" />
+                  <TableColumn fx:id="mailstudent" prefWidth="114.0" text="Adresse Mail" />
+                  <TableColumn fx:id="telstudent" prefWidth="83.0" text="telephone" />
+                  <TableColumn fx:id="adressestudent" prefWidth="105.0" text="Adresse" />
+                  <TableColumn fx:id="niveaustudent" prefWidth="68.0" text="Niveau" />
+                  <TableColumn fx:id="classestudent" prefWidth="69.0" text="Classe" />
+               </columns>
+            </TableView>
+            <ComboBox fx:id="tri" layoutX="163.0" layoutY="482.0" onAction="#handletrierstudent" prefWidth="150.0" promptText="Trier par .." />
+            <TextField fx:id="search" layoutX="164.0" layoutY="453.0" onMouseClicked="#handlesearch" promptText="Chercher" />
+            <CheckBox fx:id="Refusee" layoutX="36.0" layoutY="486.0" mnemonicParsing="false" onAction="#handlefiltrearchive" text="Archive" textFill="WHITE" />
+            <CheckBox fx:id="Acceptee" layoutX="36.0" layoutY="457.0" mnemonicParsing="false" onAction="#handlefiltreactive" text="Active" textFill="#fffafa" />
+            <Button fx:id="details" layoutX="462.0" layoutY="462.0" mnemonicParsing="false" onAction="#handledetails" prefHeight="25.0" prefWidth="141.0" text="Plus de detailles --&gt;" />
+            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="11.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back4" layoutX="7.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleback1" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: none;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
