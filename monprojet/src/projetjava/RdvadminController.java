@@ -34,6 +34,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -41,6 +42,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import services.rdv_service;
 import services.user_service;
@@ -78,9 +80,9 @@ public class RdvadminController implements Initializable {
     String nom,prenom,date,mail,type;
     rdv arr;
     @FXML
-    private TextField nomtext,fraistext,anneetext,mailtext,teltext,prenomtext,niveautext;
+    private TextField nomtext,fraistext,anneetext,mailtext,teltext,prenomtext;
     @FXML
-    private ComboBox<String> adressecombo,classetext,nbrmoistext,typetext;
+    private ComboBox<String> adressecombo,classetext,nbrmoistext,typetext,niveautext;
     @FXML
     private DatePicker datetext;
     @FXML
@@ -95,6 +97,10 @@ public class RdvadminController implements Initializable {
     private Button back2;
     @FXML
     private TableColumn<?, ?> heurerdv;
+    @FXML
+    private Label lbtel;
+    @FXML
+    private Label lbmail;
     /**
      * Initializes the controller class.
      */
@@ -199,9 +205,13 @@ public class RdvadminController implements Initializable {
         int moisp=0;
         String username=nom+"_"+prenom;
         String mdp=Integer.toString(rdvselect);
+        
         if(type.equals("student"))
         {
-            
+             lbtel.setVisible(true);
+                lbmail.setVisible(true);
+            if((teltext.getText().length()==8) )
+            {
             int classe=Integer.valueOf(classetext.getValue());
             int frais=Integer.valueOf(fraistext.getText());
             String typep=typetext.getValue();
@@ -212,13 +222,29 @@ public class RdvadminController implements Initializable {
             if(nbrmoistext.getValue().equals("9 Mois"))
                 moisp=9;
             String annes=anneetext.getText();
-            String niveau=niveautext.getText();
+            String niveau=niveautext.getValue();
             String Img="src/projetjava/images/student.png";
             user studentrdv=new user(classe,telephone,frais,rdvselect,moisp,username,mail,mdp,"Student",prenom,nom,date,Img,annes,niveau,adress,typep);
             sru.ajouterstudent(studentrdv);
             rdv.modifieretat(rdvselect,"ACCEPTEE");
             tablerdv.getItems().clear();
             handlenontraitee(event);
+            }
+            else 
+            {
+                lbtel.setVisible(true);
+                lbmail.setVisible(true);
+                if (teltext.getText().length()!=8)
+       {
+            lbtel.setTextFill(Color.RED ) ;
+            lbtel.setText("Veuillez entrer un numero de telephone valide");
+       }
+        if (!mailtext.getText().matches("\\w{3,}@"))
+       {
+           lbmail.setTextFill(Color.RED ) ;
+           lbmail.setText("Veuillez entrer une adresse mail valide ");
+       }
+            }
         }
         else if(type.equals("teacher"))
         {
@@ -275,6 +301,15 @@ public class RdvadminController implements Initializable {
     listeclasse.add("10");
     ObservableList<String> cl= FXCollections.observableArrayList(listeclasse);
     classetext.setItems(cl);
+    List<String> listeniveau = new ArrayList<>();
+    listeniveau.add("1ere");        
+    listeniveau.add("2eme");
+    listeniveau.add("3eme");
+    listeniveau.add("4eme");
+    listeniveau.add("5eme");
+    listeniveau.add("6eme");
+    ObservableList<String> nb= FXCollections.observableArrayList(listeniveau);
+    niveautext.setItems(nb);
     }
     public void rdvinfo()
     {

@@ -15,7 +15,11 @@ public class rdv {
    private int id,cin;
    private String nom,prenom,daterdv,type,mail,etat,heure;
    private java.sql.Date date;
-
+   
+    public rdv()
+    {
+        
+    }
     public rdv(int cin, String nom,java.sql.Date date, String prenom, String daterdv,String type,String mail,String etat,String heure) {
         this.cin = cin;
         this.nom = nom;

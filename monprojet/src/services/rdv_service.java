@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.ConnexionBD;
 
 /**
@@ -101,6 +103,32 @@ public class rdv_service {
             Logger.getLogger(rdv_service.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
+    }
+   
+         public List<rdv> displayAllReserved ()
+    {    List<rdv> arr=new ArrayList<>();
+        try {
+            String stat = ("select * from rendezvous ");
+            PreparedStatement pt=c.prepareStatement(stat);
+            ResultSet rs = pt.executeQuery();            
+            while (rs.next()) 
+            {
+                String nom=rs.getString("nom");
+                String prenom=rs.getString("prenom");
+                int cin=rs.getInt("cin");
+                String daterdv=rs.getString("daterdv");
+                String mail=rs.getString("mail");
+                String type=rs.getString("type");
+                String heure=rs.getString("heurerdv");
+                String etat=rs.getString("etat");
+                rdv rdvnt =new rdv(cin,nom,prenom,daterdv,mail,etat,type,heure);
+                 arr.add(rdvnt);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(rdv_service.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+        
     }
          
 }

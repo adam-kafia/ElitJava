@@ -9,6 +9,7 @@ package projetjava;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
+import com.jfoenix.controls.JFXButton;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -47,11 +48,11 @@ public class ProfilteacherController implements Initializable {
     @FXML
     private Pane profilfirst,menupdp,affichpdp;
     @FXML
-    private Button affich,modify,pdp;
+    private Button affich,modify;
     @FXML
     private ImageView grandphoto,image;
     @FXML
-    private Button retourmenu,retourprofil;
+    private Button retourprofil;
     String pic;
     user_service sru=new user_service();
     @FXML
@@ -66,6 +67,8 @@ public class ProfilteacherController implements Initializable {
     private Pane modifp;
     @FXML
     private Button edit,exit,back;
+    @FXML
+    private JFXButton returnmenu;
     /**
      * Initializes the controller class.
      */
@@ -115,7 +118,6 @@ public class ProfilteacherController implements Initializable {
     }
 
 
-    @FXML
     private void handleretourm(ActionEvent event) {
         menupdp.toFront();
     }
@@ -179,7 +181,6 @@ public class ProfilteacherController implements Initializable {
        profilfirst.toFront();
     }
 
-    @FXML
     private void handleexit(ActionEvent event) {
         try {
             Parent  conn_page = FXMLLoader.load(getClass().getResource("index.fxml"));
@@ -203,5 +204,9 @@ public class ProfilteacherController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ProfilteacherController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void handlexit(ActionEvent event) {
     }
 }

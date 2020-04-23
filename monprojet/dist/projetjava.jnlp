@@ -57,7 +57,7 @@
     <jar href="lib\spring-expression-5.1.6.RELEASE.jar" size="280482" download="eager" />
     <jar href="lib\spring-jcl-5.1.6.RELEASE.jar" size="23762" download="eager" />
     <jar href="lib\webcam-capture-0.3.12.jar" size="428314" download="eager" />
-    <jar href="projetjava.jar" size="78300755" download="eager" />
+    <jar href="projetjava.jar" size="78291613" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="projetjava" >
     <param name="requiredFXVersion" value="8.0+"/>

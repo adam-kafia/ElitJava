@@ -6,6 +6,9 @@
 
 package projetjava;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoClientException;
 import com.nexmo.client.sms.SmsSubmissionResponse;
@@ -26,10 +29,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import services.user_service;
 
@@ -44,13 +51,17 @@ public class LoginController implements Initializable {
     @FXML
     private TextField emailtext;
     @FXML
-    private PasswordField pwdtext;
+    private JFXPasswordField pwdtext;
     String email,pwd,type;
     user_service sru=new user_service();
     @FXML
     private Button back;
     @FXML
     private Hyperlink mdpoublie;
+    @FXML
+    private Label lbmail;
+    @FXML
+    private Label lbpwd;
     /**
      * Initializes the controller class.
      */
@@ -117,11 +128,21 @@ public class LoginController implements Initializable {
        else 
         {
             System.out.println("compte mayekhdemch");     
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+       alert.setTitle("Login");
+       alert.setHeaderText(" ALERT ");
+       alert.setContentText(" your account has been disabled");
+       alert.showAndWait();
         }
        }
        else 
        {
            System.out.println("compte ghalet");
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+       alert.setTitle("login");
+       alert.setHeaderText(" login informations");
+       alert.setContentText(" please verifie your email or password");
+       alert.showAndWait();
        }
        
        
@@ -165,6 +186,8 @@ public class LoginController implements Initializable {
         }
        
     }
+
+ 
    
     
 }

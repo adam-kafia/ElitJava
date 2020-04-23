@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -43,6 +45,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import services.rdv_service;
 import projetjava.Javamailutil;
 /**
@@ -96,6 +99,12 @@ public class RdvinscriptionController implements Initializable {
     private Label lbcin;
     @FXML
     private Label lbempty;
+     List<LocalDate> holidays1 = new ArrayList<>();
+    @FXML
+    private Label lbcomplet;
+    @FXML
+    private Label lbmail;
+    
     /**
      * Initializes the controller class.
      */
@@ -106,21 +115,56 @@ public class RdvinscriptionController implements Initializable {
       comb.add("student");
       ObservableList<String> combtype= FXCollections.observableArrayList(comb);
       type.setItems(combtype);
+           DatePickerColor();
     }    
 
+
+    public void DatePickerColor(){
+   
+        List<rdv> holidays = new ArrayList<>();
+        holidays=srv.afficherRdvNt ("ACCEPTEE","REFUSEE");
+        for(int i=0;i<holidays.size();i++)
+        {
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+       LocalDate localDate = LocalDate.parse(holidays.get(i).getDaterdv(), formatter);
+       holidays1.add(localDate);
+        }
+    daterdvpicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+	@Override
+	public DateCell call(DatePicker param) {
+		return new DateCell(){
+			@Override
+			public void updateItem(LocalDate item, boolean empty) {
+				super.updateItem(item, empty);
+
+				if (!empty && item != null) {
+					if (holidays1.contains(item)) {
+						this.setStyle("-fx-background-color: red");
+                                                
+					}
+				}
+			}
+		};
+	}
+});
+    }
     @FXML
     private void handleajoutrdv(ActionEvent event) throws Exception {
         
+        DatePickerColor();
         LocalDate d=daterdvpicker.getValue();    
         LocalDate today= LocalDate.now();
        
        
-    if (nomtext.getText().isEmpty() ||prenomtext.getText().isEmpty() || mailtext.getText().isEmpty() )
+    if (nomtext.getText().isEmpty() ||prenomtext.getText().isEmpty() || mailtext.getText().isEmpty() || holidays1.contains(d) )
     {
 
       lbempty.setVisible(true);
+      lbcomplet.setVisible(true);
       lbempty.setTextFill(Color.RED ) ;
       lbempty.setText("Veuillez Remplir Tout les champs");  
+      lbcomplet.setTextFill(Color.RED ) ;
+      lbcomplet.setText("Choisissez une autre date ! ");
         
     }
     else 
@@ -129,8 +173,10 @@ public class RdvinscriptionController implements Initializable {
         lbempty.setVisible(false);
              if (d.isAfter(today) && (cintext.getText().length()==8) )
               {
+        lbmail.setVisible(false);
         lbcin.setVisible(false);
         lbldeb.setVisible(false);
+        lbcomplet.setVisible(false);
         cin = cintext.getText();  
         numcin=Integer.parseInt(cin);	
         nom=nomtext.getText();
@@ -161,7 +207,8 @@ public class RdvinscriptionController implements Initializable {
        {
         lbcin.setVisible(true);
         lbldeb.setVisible(true);
-       if(d.isBefore(today))
+        lbmail.setVisible(true);
+       if(d.isBefore(today) || (holidays1.contains(d)))
        {
             lbldeb.setTextFill(Color.RED ) ;
             lbldeb.setText("Veuillez entrer une date superieure \n a la date d'aujourd'hui");
@@ -171,7 +218,11 @@ public class RdvinscriptionController implements Initializable {
             lbcin.setTextFill(Color.RED ) ;
             lbcin.setText("Veuillez entrer une CIN valide");
        }
-      
+       else 
+       {
+           lbmail.setTextFill(Color.RED ) ;
+           lbmail.setText("Veuillez entrer une adresse mail valide ");
+       }
            
 
        }
