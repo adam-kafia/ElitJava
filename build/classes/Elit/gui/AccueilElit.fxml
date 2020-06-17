@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="828.0" prefWidth="1100.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Elit.gui.AccueilElitController">
+   <children>
+      <Pane prefHeight="320.0" prefWidth="1100.0" style="-fx-background-color: #00ffff;" />
+      <ImageView fitHeight="304.0" fitWidth="513.0" layoutX="500.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../IssamFiles/events.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="320.0" fitWidth="491.0" layoutX="95.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../IssamFiles/clubs.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnClub" layoutX="199.0" layoutY="456.0" mnemonicParsing="false" onAction="#goToClub" prefHeight="69.0" prefWidth="179.0" style="-fx-background-color: #00ffff;" text="Clubs Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnEvent" layoutX="668.0" layoutY="456.0" mnemonicParsing="false" onAction="#gotToEvent" prefHeight="69.0" prefWidth="170.0" style="-fx-background-color: #00ffff;" text="Events Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="345.0" fitWidth="513.0" layoutX="294.0" layoutY="25.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../pictures/83508723_430423307681698_2318361073649975296_n.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnClassroom" layoutX="150.0" layoutY="688.0" mnemonicParsing="false" onAction="#gotToClassromm" prefHeight="69.0" prefWidth="201.0" style="-fx-background-color: #00ffff;" text="Classrooms Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnClassroom1" layoutX="437.0" layoutY="688.0" mnemonicParsing="false" onAction="#gotToEquipment" prefHeight="69.0" prefWidth="227.0" style="-fx-background-color: #00ffff;" text="Equipments Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnClassroom11" layoutX="750.0" layoutY="688.0" mnemonicParsing="false" onAction="#goToClass" prefHeight="69.0" prefWidth="201.0" style="-fx-background-color: #00ffff;" text="Classes Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

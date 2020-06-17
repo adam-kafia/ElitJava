@@ -19,13 +19,21 @@ import java.util.List;
  * @author kinga
  */
 public class ClassroomServices {
-      Connection c;
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+
+    Connection c;
 
     public ClassroomServices() {
         c = DbConnection.getInstance().getCnx();
     }
 
-    public void addClassroom(Classroom cl) {
+    public void addClass(Classroom cl) {
         try {
             String requete = "insert into classrooms (name,capacity,bloc) values(?,?,?)";
             PreparedStatement pst = c.prepareStatement(requete);
@@ -39,7 +47,7 @@ public class ClassroomServices {
         }
     }
 
-    public List<Classroom> ListClassroom() {
+    public List<Classroom> ListClasse() {
         List<Classroom> Mylist = new ArrayList<>();
         try {
             String requete = "select * from classrooms";
@@ -49,8 +57,8 @@ public class ClassroomServices {
                 Classroom p = new Classroom();
                 p.setName(rs.getString("name"));
                 p.setCapacity(rs.getInt("capacity"));
-                p.setBloc(rs.getString("bloc"));
                 p.setId(rs.getInt("id"));
+                p.setBloc(rs.getString("bloc"));
                 Mylist.add(p);
             }
 
@@ -60,9 +68,9 @@ public class ClassroomServices {
         return Mylist;
     }
 
-    public void UpdateClassroom(Classroom cl) {
+    public void UpdateClasse(Classroom cl) {
         try {
-            String requete = "update classrooms set name=?,capacity=?,bloc=?  where ? = id";
+            String requete = "update classrooms set name=?,capacity=?,bloc=? where ? = id";
             PreparedStatement pst = c.prepareStatement(requete);
             pst.setString(1, cl.getName());
             pst.setInt(2, cl.getCapacity());
@@ -82,11 +90,12 @@ public class ClassroomServices {
             PreparedStatement pst = c.prepareStatement(requete);
             pst.setInt(1, cl.getId());
             pst.executeUpdate();
-            System.out.println("Classroom Deleted !!!!");
+            System.out.println("Classrooms Deleted !!!!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
     }
-    
 }
+
+

@@ -19,7 +19,7 @@ import java.util.List;
  * @author kinga
  */
 public class EquipmentServices {
-      Connection c;
+        Connection c;
 
     public EquipmentServices() {
         c = DbConnection.getInstance().getCnx();
@@ -31,16 +31,16 @@ public class EquipmentServices {
             PreparedStatement pst = c.prepareStatement(requete);
             pst.setString(1, cl.getLabel());
             pst.setString(2, cl.getCategory());
-            pst.setFloat(3, cl.getQte());
-            pst.setFloat(4, cl.getQteInit());
+            pst.setDouble(3, cl.getQte());
+            pst.setDouble(4, cl.getQteInit());
             pst.executeUpdate();
-            System.out.println("equipment added !!!!");
+            System.out.println("Equipment added !!!!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-    public List<Equipment> ListEquipment() {
+    public List<Equipment> ListClasse() {
         List<Equipment> Mylist = new ArrayList<>();
         try {
             String requete = "select * from equipement";
@@ -62,7 +62,7 @@ public class EquipmentServices {
         return Mylist;
     }
 
-    public void UpdateEquipment(Equipment cl) {
+    public void UpdateClasse(Equipment cl) {
         try {
             String requete = "update equipement set label=?,category=?,qte=?,qte_init=? where ? = id";
             PreparedStatement pst = c.prepareStatement(requete);
@@ -72,14 +72,14 @@ public class EquipmentServices {
             pst.setFloat(4, cl.getQteInit());
             pst.setInt(5, cl.getId());
             pst.executeUpdate();
-            System.out.println("Equipement Updated !!!");
+            System.out.println("Equipment Updated !!!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
     }
 
-    public void DeleteEquipment(Equipment cl) {
+    public void DeleteClasse(Equipment cl) {
         try {
             String requete = "delete from Equipement where ? = id";
             PreparedStatement pst = c.prepareStatement(requete);

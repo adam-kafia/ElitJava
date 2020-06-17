@@ -11,18 +11,27 @@ package Elit.entities;
  */
 public class Classe {
 
-    private int id;
+   private int id;
     private String name;
     private String level;
-
+    private int id_classroom;
     public Classe() {
     }
 
     
-    public Classe(int id, String name, String level) {
+    public Classe(int id, String name, String level,int id_classroom) {
         this.id = id;
         this.name = name;
         this.level = level;
+        this.id_classroom=id_classroom;
+    }
+
+    public void setId_classroom(int id_classroom) {
+        this.id_classroom = id_classroom;
+    }
+
+    public int getId_classroom() {
+        return id_classroom;
     }
 
     public int getId() {
@@ -76,8 +85,10 @@ public class Classe {
 
     @Override
     public String toString() {
-        return "Class{" + "id=" + id + ", name=" + name + ", level=" + level + '}';
+        return "Classe{" + "id=" + id + ", name=" + name + ", level=" + level + ", id_classroom=" + id_classroom + '}';
     }
+
+   
     
     
 }

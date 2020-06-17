@@ -16,10 +16,6 @@ public class Classroom {
     private int capacity;
     private String bloc;
 
-    public Classroom() {
-        
-    }
-
     public int getId() {
         return id;
     }
@@ -30,6 +26,9 @@ public class Classroom {
 
     public String getName() {
         return name;
+    }
+
+    public Classroom() {
     }
 
     public void setName(String name) {

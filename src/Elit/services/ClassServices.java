@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class ClassServices {
 
-    Connection c;
+   Connection c;
 
     public ClassServices() {
         c = DbConnection.getInstance().getCnx();
@@ -29,10 +29,11 @@ public class ClassServices {
 
     public void addClass(Classe cl) {
         try {
-            String requete = "insert into classes (name,level) values(?,?)";
+            String requete = "insert into classes (name,level,idclassroom) values(?,?,?)";
             PreparedStatement pst = c.prepareStatement(requete);
             pst.setString(1, cl.getName());
             pst.setString(2, cl.getLevel());
+            pst.setInt(3, cl.getId_classroom());
             pst.executeUpdate();
             System.out.println("Class added !!!!");
         } catch (SQLException ex) {
@@ -50,6 +51,7 @@ public class ClassServices {
                 Classe p = new Classe();
                 p.setName(rs.getString("name"));
                 p.setLevel(rs.getString("level"));
+                p.setId_classroom(rs.getInt("idclassroom"));
                 p.setId(rs.getInt("id"));
                 Mylist.add(p);
             }
@@ -62,11 +64,12 @@ public class ClassServices {
 
     public void UpdateClasse(Classe cl) {
         try {
-            String requete = "update classes set name = ? , level = ?  where ? = id";
-            PreparedStatement pst = c.prepareStatement(requete);
+            String requete = "update classes set name = ? , level = ? , idclassroom = ? where ? = id";
+            PreparedStatement pst = c.prepareStatement(requete); 
             pst.setString(1, cl.getName());
             pst.setString(2, cl.getLevel());
-            pst.setInt(3, cl.getId());
+            pst.setInt(3, cl.getId_classroom());
+            pst.setInt(4, cl.getId());
             pst.executeUpdate();
             System.out.println("Classe Updated !!!");
         } catch (SQLException ex) {
@@ -87,4 +90,29 @@ public class ClassServices {
         }
         
     }
+    public Classe findCLasseByName(String name)
+    {
+        
+        try {
+            String req="select * from classes where name =?";
+            PreparedStatement pst = c.prepareStatement(req);
+            pst.setString(1, name);
+            ResultSet rs= pst.executeQuery();
+            while(rs.next())
+            {
+                Classe c =new Classe();
+                c.setId(rs.getInt("id"));
+                c.setLevel(rs.getString("level"));
+                c.setName(name);
+                c.setId_classroom(rs.getInt("idClassroom"));
+                return c;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("NOT FOUND ");
+        return null;
+        
+            
+    } 
 }
